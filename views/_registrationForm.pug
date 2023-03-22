@@ -1,0 +1,335 @@
+block content 
+    .registration
+        h2.heading-secondary.ma-bt-md Schedule your private lesson today!
+        form(method="POST", action="send")
+            fieldset
+                h3.heading-tertiary.ma-bt-md 
+                h4.heading-quadiary.ma-bt-md Have an account?
+                    span Login
+                    
+            fieldset 
+                h3.heading-tertiary.ma-bt-md 
+                    label.form__label(for='firstname') First Name
+                    input#name.form__input(type='text', required, name='firstname')
+                    label.form__label(for='lastname') Last Name
+                    input#name.form__input(type='text', required, name='lastname')
+            fieldset
+                .registration-student 
+                    label.form__label(for='student') Who are these lessons for?
+                        label.form__label--option(for='myself') Myself
+                        input#student.form__input(type='checkbox', name='myself') 
+                        label.form__label--option(for='child') Child
+                        input#student.form__input(type='checkbox', name='child')
+                        label.form__label--option(for='child') Child
+                        input#student.form__input(type='checkbox', name='child')
+                            label.form__label(for='firstname') First Name
+                            input#name.form__input(type='text', required, name='firstname')
+                            label.form__label(for='lastname') Last Name
+                            input#name.form__input(type='text', required, name='lastname')
+                            label.form__label--input(for='grandchild-dob') Grandchild's date of birth
+                            input.form__label--input(type='date',name='grandchild-dob')
+                        label.form__label--option(for='grandchild') Grandchild
+                        input#student.form__input(type='checkbox', name='grandchild')
+                            label.form__label(for='firstname') First Name
+                            input#name.form__input(type='text', required, name='firstname')
+                            label.form__label(for='lastname') Last Name
+                            input#name.form__input(type='text', required, name='lastname')
+                            label.form__label--input(for='grandchild-dob') Grandchild's date of birth
+                            input.form__label--input(type='date',name='grandchild-dob')
+                        label.form__label--option(for='other') Other
+                        input#student.form__input(type='checkbox', name='other')
+                            label.form__label(for='firstname') First Name
+                            input#name.form__input(type='text', required, name='firstname')
+                            label.form__label(for='lastname') Last Name
+                            input#name.form__input(type='text', required, name='lastname')
+                            label.form__label--input(for='relationship') Their relationship to you
+                            input.form__label--input(type='date',name='relationship')
+                            label.form__label--input(for='grandchild-dob') Date of birth
+                            input.form__label--input(type='date',name='grandchild-dob')
+                        label.form__label(for='add-student')
+                        input.form__input--add(type="checkbox", name='add-student')
+            fieldset
+                label(for='instrument').form__label Choose intrument for <span>Jarred</span>
+                    select(id='instrument')#addInstrument.select(placeholder='Instrument', name='instrumentType')
+                        option(value='0', selected= true) -- Select --
+                        option(value='Violin') Violin
+                        option(value='Viola') Viola
+                        option(value='Piano') Piano
+                        option(value='Voice') Voice
+            fieldset
+                label(for="experience") How much experience does <span>Jarred</span> have?
+                select(id="experience")#addInstrument.select(placeholder='Instrument', name='instrumentType')
+                        option(value='0', selected= true) -- Select --
+                        option(value='Violin') Violin
+                        option(value='Viola') Viola
+                        option(value='Piano') Piano
+                        option(value='Voice') Voice
+                label(for="experience-text") Please feel free to elaborate on their musical experience here
+                .info__label This will be available for your instructor to review.
+                input(id="experience-text", type="text")
+            fieldset 
+                label(for="lesson-frequency") How often are <span>Jarred's</span> lessons?
+                .info__label We recommend weekly lessons and feedback has shown us this does better appeal to our instructors
+                select(id="lesson-frequency")#addFrequency.select
+                        option(value='0', selected= true) -- Select --
+                        option(value='weekly') Weekly
+                        option(value='bi-weekly') Bi-weekly
+                        option(value='Monthly') Monthly
+                        option(value='single') 1 lesson
+                        option(value='single') 3 lessons
+                    label(for="lesson-frequency") How often are <span>Jarred's</span> lessons?
+                label(for="lesson-duration") Select the duration for <span>Jarred's</span> lessons.
+                select(id="lesson-duration")#addDuration.select
+                    option(value='0', selected= true) -- Select --
+                    option(value='30') 30-minutes
+                    option(value='45') 45-minutes
+                    option(value='60') 60-minutes
+                    option(value='90') 90-minutes
+                    option(value='120') 120-minutes
+                    .price $0<span>/week</span>
+                        .info_label for recurring lessons, this is a semester long commitment.  You can pay for the entire semester or on a monthly basis(pro-rated if needed for first and last month).  You
+                    .includes Free 30-minute trial
+                        .info__label Your first lesson will be a 30-minute free trial lesson.  You will have 2 days after this scheduled lesson to cancel or change instructors.  We will send you a follow-up email directly after your lesson if you wish to take action on a cancelation or swap!
+                    .semester-end-date The last day of this semester is June 5th
+                    .recital-dates Your are eligible to perform in our seasonal reciatl. Our recital dates are <span>June 5th, 2022</span><span>June 6th, 2022</span>
+                        info__label You will have the option to claim your recital date once enrolled.
+                    input#student.form__input(type='checkbox')
+            fieldset 
+                label.form__label(for="time") Please select a date that works best for you.
+                input.form__input(id="time",type="date")
+                
+            
+                    input#student.form__input(type='text', required)
+                    <label class="signup-form__music-lessons__schema-1__student-info__myself">Myself</label><input type="checkbox">
+                        <div><label>Jarred Cianciulli</label></div>
+
+                        <label class="signup-form__music-lessons__schema-1__student-info__child">Child</label><input type="checkbox">
+                        <div><label >child's full name</label><input type="text"></div>
+                        <div><label >child's date of birth</label><input type="date"></div>
+
+                        <label class="signup-form__music-lessons__schema-1__student-info__grandchild">Grandchild</label><input type="checkbox">
+                        <div><label >grandchild's full name</label><input type="text"></div>
+                        <div><label >grandchild's date of birth</label><input type="date"></div>
+
+
+                        <label class="signup-form__music-lessons__schema-1__student-info__other">Other</label><input type="checkbox">
+                        <div><label >their full name</label><input type="text"></div>
+                        <div><label >their relationship to you</label><input type="text"></div>
+                        <div><label >their date of birth</label><input type="date"></div>
+    
+    
+
+        <div class="signup-form__music-lessons__all">
+            <div class="signup-form__music-lessons__schema-1 active">
+                                    <!-- {{msg}} -->
+                <h3>Schedule your music lesson today!</h3>
+                <form  method="POST" action="send">
+            </div>
+                <div class="signup-form__music-lessons__schema-1">
+
+                    <div for="" class="signup-form__music-lessons__schema-1__student-info__your-name">Your full name</div><label type="text">Jarred Cianciulli</label>
+                    
+                    <div for="" class="signup-form__music-lessons__schema-1__student-info__student">Who might these lessons be for?</div>
+
+                    
+                        <label class="signup-form__music-lessons__schema-1__student-info__myself">Myself</label><input type="checkbox">
+                        <div><label>Jarred Cianciulli</label></div>
+
+                        <label class="signup-form__music-lessons__schema-1__student-info__child">Child</label><input type="checkbox">
+                        <div><label >child's full name</label><input type="text"></div>
+                        <div><label >child's date of birth</label><input type="date"></div>
+
+                        <label class="signup-form__music-lessons__schema-1__student-info__grandchild">Grandchild</label><input type="checkbox">
+                        <div><label >grandchild's full name</label><input type="text"></div>
+                        <div><label >grandchild's date of birth</label><input type="date"></div>
+
+
+                        <label class="signup-form__music-lessons__schema-1__student-info__other">Other</label><input type="checkbox">
+                        <div><label >their full name</label><input type="text"></div>
+                        <div><label >their relationship to you</label><input type="text"></div>
+                        <div><label >their date of birth</label><input type="date"></div>
+                </div>
+
+                
+            
+            <div class="signup-form__music-lessons__schema-2">
+                <div class="signup-form__music-lessons__schema-2__lesson-details">
+                    <div class="signup-form__music-lessons__schema-2__lesson-details__location">
+
+                        <label for="" class="signup-form__music-lessons__schema-2__lesson-details__virtual">Virtual Lessons</label><input type="checkbox">
+                        <label for="" class="signup-form__music-lessons__schema-2__lesson-details__in-home">In-Home Lessons</label><input type="checkbox">
+                        <label for="" class="signup-form__music-lessons__schema-2__lesson-details__my-home">My home in Plainsboro NJ.  <span>Please email me for the exact location at <span>christieandjarred@gmail.com</span>, otherwise it will be emailed after signup is complete</span></label><input type="checkbox">
+                        <label for="" class="signup-form__music-lessons__schema-2__lesson-details__your-location">Your location</label><input type="checkbox">Please enter your location so we can verify it is within an optimal distance and calculate the travel fee<input type="text" placeholder="Lesson Location">Lesson Location
+                    </div>
+
+                <div class="signup-form__music-lessons__schema-2__lesson-details__instrument">
+                    <h4>Choose a primary instrument for our lesson</h4>
+
+                        <label for="" class="signup-form__music-lessons__schema-2__lesson-details__instrument-violin">Violin</label><input type="checkbox">
+                        <label for="" class="signup-form__music-lessons__schema-2__lesson-details__instrument__viola">Viola</label><input type="checkbox">
+                        <label for="" class="signup-form__music-lessons__schema-2__lesson-details__instrument__piano">Cello</label><input type="checkbox">
+                        <label for="" class="signup-form__music-lessons__schema-2__lesson-details__instrument__piano">Piano</label><input type="checkbox">
+                </div>
+
+                    <div class="signup-form__music-lessons__schema-2__lesson-details__level">
+                        <h4>How many years experience playing music?</h4>
+                            <label class="signup-form__music-lessons__schema-2__lesson-details__level">complete beginner
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+                            
+                            <label class="signup-form__music-lessons__schema-2__lesson-details__level">1-2 years
+                                <input type="checkbox">
+                                <span class="checkmark"></span>
+                            </label>
+            
+                            <label class="signup-form__music-lessons__schema-2__lesson-details__level">2-4 years
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            </label>
+
+                            <label class="signup-form__music-lessons__schema-2__lesson-details__level">4-9 years
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+
+                            <label class="signup-form__music-lessons__schema-2__lesson-details__level">over 10 years
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            </label>
+
+                            
+                            <label class="signup-form__music-lessons__schema-2__lesson-details__level">Other
+                            <input type="checkbox">
+                            <span class="checkmark"></span>
+                            <input type="text">
+                            </label>
+                    </div>
+
+
+                
+                    <div class="signup-form__music-lessons__schema-2__lesson-details__frequency">
+                        <h4>Please choose the frequency of our lessons</h4>
+
+                        <label class="signup-form__music-lessons__schema-2__lesson-details__lesson-package">1 lesson  <span class="trial">non-repeating</span>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>  
+                        
+
+                        <label class="signup-form__music-lessons__schema-2__lesson-details__frequency">weekly lessons <span class="trial">includes a 30-minute trial lesson</span>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+
+                        <label class="signup-form__music-lessons__schema-2__lesson-details__frequency">bi-weekly lessons
+                        <span class="trial">includes a 30-minute trial lesson</span>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+                    <label class="signup-form__music-lessons__schema-2__lesson-details__frequency">twice-weekly lessons
+                        <span class="trial">includes a 45-minute trial lesson</span>
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+                    </div>
+
+
+
+                    <div class="signup-form__music-lessons__schema-2__lesson-details__length">
+                        <h4>Please choose the length of our lessons</h4>
+                        <label class="signup-form__music-lessons__schema-2__lesson-details__length">30 minutes
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+
+                        <label class="signup-form__music-lessons__schema-2__lesson-details__length">45 minutes
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+
+                        <label class="signup-form__music-lessons__schema-2__lesson-details__length">1 hour
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+
+                        
+                        <label class="signup-form__music-lessons__schema-2__lesson-details__length">1 1/2 hours
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+
+                        <label class="signup-form__music-lessons__schema-2__lesson-details__length">2 hours
+                        <input type="checkbox">
+                        <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+
+
+                <div class="signup-form__music-lessons__schema-3__schedule">
+                    <h4 class="tuning-3-schedule">Schedule your weekly lessons</h4>
+                        <span>Please keep in mind that our first lesson is a 30-minute trial lesson</span>
+                        <span>You can adjust your lessons up to 2-days before each lesson, my availability will be reflected in your portal as well.</span>
+
+                        <div class="signup-form__music-lessons__schema-3__schedule__time-block"></div>
+                            <div>Please select a day which works best for you: <input type="date"></div>
+                        <div class="signup-form__music-lessons__schema-3__schedule__validation">
+                            Availablility for Friday, July 30th
+                        </div>
+                        <div class="signup-form__music-lessons__schema-3__schedule__availability">
+                            <div class="signup-form__music-lessons__schema-2__schedule__times">7pm to 9pm</div>
+                            <div class="signup-form__music-lessons__schema-2__schedule__times">7:15pm to 9:15pm</div>
+                            <div class="signup-form__music-lessons__schema-2__schedule__times">7:30pm to 9:30pm</div>
+                        </div>
+                    </div>
+
+
+                <div class="signup-form__music-lessons__schema-4__contact-info">
+                    <h4>Contact Details</h4>
+                    <div class="signup-form__music-lessons__schema-4__contact-info__section">
+                        <label for="">First Name</label><input type="text">
+                        <label for="">Last Name</label><input type="text">
+                        <label for="">Email Address</label><input type="email">
+                        <label for="">Phone Number</label><input type="phone">
+                        <label for=""></label><input type="text">
+                        </div>
+                    </div>
+
+                        <div class="signup-form__music-lessons__schema-5__contact-info">
+                    <h4>Payment Details</h4>
+                    <div class="signup-form__music-lessons__schema-5__contact-info__section">
+                        <label for="">First Name</label><input type="text">
+                        <label for="">Last Name</label><input type="text">
+                        <label for="">Email Address</label><input type="email">
+                        <label for="">Phone Number</label><input type="phone">
+                        </div>
+                    </div>
+                    
+                <div>
+                        {{>form-controls}}
+                </form>
+
+
+
+            <div class="signup-info">
+            <div class="signup-body">
+                <div class="signup-description lesson-details">Student Information</div>
+                    <div class="line"></div>
+                    <div class="signup-description lesson-details">Lesson Details</div>
+                    <div class="line"></div>
+                    <div class="signup-description schedule">Schedule</div>
+                    <div class="line"></div>
+                    <div class="signup-description contact-details">Contact Details</div>
+                    <div class="line"></div>
+                    <div class="signup-description payment">Payment</div>
+                    <div class="line"></div>
+                    <div class="signup-description submit">Submit</div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+

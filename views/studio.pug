@@ -1,0 +1,106 @@
+extends base
+include _reviewCard
+
+
+mixin overviewBox(label, text, icon)
+  .overview-box__detail
+    svg.overview-box__icon
+      use(xlink:href=`/img/icons/icon.svg#${icon}`)
+    span.overview-box__label= label
+    span.overview-box__text= text
+
+mixin instructorBox(img, name)
+    .overview-box__detail--instructor
+        img.overview-box__detail--instructor__img(src=`/img/users/${img}`, alt='Instructor')
+        span.overview-box__detail--instructor__text= name
+        .overview-box__detail--instructor__info
+            span.overview-box__detail--instructor__label Instructor
+        .overview-box__detail--instructor__btns
+            button.btn.btn--blue.btn--instructor View bio
+            button.btn.btn--blue.btn--instructor Availability
+        
+
+block content
+    section.section-outline
+        .section-header
+            .header__hero
+                .header__hero-overlay &nbsp;
+                img.header__hero-img(src=`/img/studio/${studio.imageCover}`, alt=`${studio.courseName}`)
+
+            .heading-box
+                h1.heading-primary
+                    span= studio.courseName
+
+        section.section-description
+            .overview-box
+                div
+                    .overview-box__group
+                        h2.heading-secondary.ma-bt-lg Overview
+                        +overviewBox("Course", studio.courseType, "instructor")
+                        if (studio.instrument)
+                            +overviewBox("Instrument", studio.instrument.join(', '), "icon-music")
+                        +overviewBox("Frequency", studio.courseFrequency, "calendar")
+                        .overview-box__detail
+                            svg.overview-box__icon
+                                use(xlink:href="/img/icons/icon.svg#clock")
+                            span.overview-box__label Duration
+                            span.overview-box__text= `${studio.courseDuration}-minutes`
+                        +overviewBox("Level", studio.difficulty, "icon-trending-up")
+                        if (studio.virtual)
+                            +overviewBox("Location", "Virtual", "location")
+                        else
+                            +overviewBox("Location", studio.courseLocation, "location")
+                        +overviewBox('Rating', `${studio.ratingsAverage} / 5`, 'icon-star')
+            .overview-box__group
+                if (studio.instructor.length <= 2)
+                    h2.heading-secondary.ma-bt-lg.overview-box__group--heading Instructors
+                else 
+                    h2.heading-secondary.ma-bt-lg.overview-box__group--heading Instructor
+                each instructor in studio.instructor
+                    +instructorBox(instructor.photo, instructor.name.split(' ')[0])
+                    
+
+        .description-box
+            h2.heading-secondary.ma-bt-lg.description__header= `About ${studio.courseName}` 
+            p.description__short--text= studio.summary 
+            - const parapraphs = studio.description.split('\n');
+            each p in parapraphs
+                p.long__description__long--text= p
+
+        .description-box
+            h2.heading-secondary.ma-bt-lg.description__header Curriculum Overview
+            p.long__description__long--text= studio.curriculumDescription
+        .description-box.policy-box
+            h2.heading-secondary.ma-bt-lg.description__header Studio Policy Agreement
+            button.btn.btn--blue.btn-down.btn-policy(src=`/img/studioPol/${studio.studioPolicy}`, alt='Studio Policy Document') Download Policy
+
+
+        section.section-pictures
+            .picture-box
+                img.picture-box__img.picture-box__img--1(src=`/img/studio/${studio.images[0]}`, alt='Studio Cover Image 1')
+            .picture-box
+                img.picture-box__img.picture-box__img--2(src=`/img/studio/${studio.images[1]}`, alt='Studio Cover Image 2')
+            .picture-box
+                img.picture-box__img.picture-box__img--3(src=`/img/studio/${studio.images[2]}`, alt='Studio Cover Image 3')
+
+        
+        if (studio.reviews.length >= 3)
+            section.section-reviews
+                .reviews
+                    each review in studio.reviews
+                        +reviewCard(review)
+
+        section.section-cta
+            .cta
+                .cta__img.cta__img--logo
+                    img(src="/img/logo.svg", alt="Circular MusiWork Logo")
+                img.cta__img.cta__img--1(src=`/img/studio/${studio.images[0]}`, alt='Circular Studio Cover Image 1')
+                img.cta__img.cta__img--2(src=`/img/studio/${studio.images[1]}`, alt='Circular Studio Cover Image 2')
+                .cta__content
+                    h2.heading-secondary What are you waiting for?
+                    p.cta__text= `${studio.courseDuration}-minutes. ${studio.courseFrequency} lessons. Start your musical adventure today!`
+                
+                if user
+                    button.btn.btn--blue.span-all-rows.btn__cta#book-studio(data-studio-id=`${studio.id}`) Book now!
+                else
+                    a.btn.btn--blue.span-all-rows.btn__cta(href="/login") Book now!

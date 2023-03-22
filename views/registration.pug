@@ -1,0 +1,321 @@
+extends base
+
+mixin next
+    .btn-small.btn-small__reg.next#next Next
+
+block content 
+    .progress-container
+        ul.progress-bar-span
+            .progress-bar-step
+            li.progress-bar_li-span-number 1
+            li.progress-bar_li-span-number 2
+            li.progress-bar_li-span-number 3
+            li.progress-bar_li-span-number 4
+            li.progress-bar_li-span-number 5
+            li.progress-bar_li-span-number 6
+            li.progress-bar_li-span-number 7
+            li.progress-bar_li-span-number 8
+        ul.progress-bar
+            li.progress-bar_li Student Information
+            li.progress-bar_li Instrument
+            li.progress-bar_li Experience
+            li.progress-bar_li Frequency and Duration
+            li.progress-bar_li Instructor
+            li.progress-bar_li Add Lesson or Proceed
+            li.progress-bar_li Account
+            li.progress-bar_li Card Payment
+    .registration
+        h2.heading-secondary.ma-bt-md.heading-secondary__register Private lesson registration
+        form#pl-form(method="POST", action="send")
+            fieldset.registration__field.registration__field-1
+                h3.heading-tertiary.ma-bt-md.registration__form Welcome to MusiWork Studios
+                p.heading-p what's your name?
+                label.form__label.registration__form--label(for='user-firstname') First Name
+                input#user-firstname.form__input.registration__form--input(type='text', required, name='user-firstname')
+                label.form__label.registration__form--label(for='user-lastname') Last Name
+                input#user-lastname.form__input.registration__form--input(type='text', required, name='user-lastname')
+            .student-1.student
+                fieldset.registration__field-2.registration__outer
+                    fieldset.registration__field.registration-student.registration-student__1--p1.activeFieldset
+                        h3.form__label(for='student') Who are these lessons for?
+                        input.form__input--option.form__input--option-reg(type='radio', name='Student',
+                        value='myself',
+                        id="myself") 
+                        label.form__label--option.form__label--option-reg.formAdmin(for="myself")
+                            span Myself 
+                        input.form__input--option.form__input--option-reg(type='radio',
+                        id='child',
+                        value='child', name='Student')
+                        label.form__label--option.form__label--option-reg.formAdmin(for='child')
+                            span Child
+                        input.form__input--option.form__input--option-reg(type='radio',
+                        id='grandchild', value='grandchild',name='Student')
+                        label.form__label--option.form__label--option-reg.formAdmin(for='grandchild')
+                            span Grandchild
+                        input.form__input--option.form__input--option-reg(type='radio', name='Student',
+                        value='other',
+                        id='other')
+                        label.form__label--option.form__label--option-reg.formAdmin(for='other')
+                            span Other
+                    fieldset.registration__field.registration__field-2-part-2
+                        .registration-student
+                            h3.form__label(for='student') Enter <span>their</span> information
+                            label.form__label.form__label--input.form__label--text(for='student-firstname') First Name
+                            input#student-firstname.form__input.ma-bt-md(type='text', required, name='firstname')
+                            label.form__label.form__label--input.form__label--text(for='student-lastname') Last Name
+                            input#student-lastname.form__input.ma-bt-md(type='text', required, name='lastname')
+                            label.form__label--input.form__label.form__label--text(for='relationship') Their relationship to you
+                            input.student-relationship.form__label--input.form__input.ma-bt-md(type='text',name='relationship')
+                            label.form__label--input.form__label.form__label--text(for='grandchild-dob') Date of birth
+                            input#student-birthdate.form__label--input.form__input.ma-bt-md(type='date',name='grandchild-dob')
+                fieldset.registration__field.registration__field-3
+                    label(for='instrument').form__label.form__label--select.form__label--3.ma-bt-md Choose intrument for <span>Jarred</span>
+                        select.select(id='student-instrument',placeholder='Instrument', name='instrumentType')
+                            option(value='0', selected= true) Select
+                            option(value='Violin') Violin
+                            option(value='Viola') Viola
+                            option(value='Piano') Piano
+                            option(value='Voice') Voice
+                fieldset.registration__field.registration__field-4
+                    label.ma-bt-md(for="experience") What type of experience does <span>Jarred</span> have?
+                    select.select.ma-bt-md(id="student-experience",placeholder='Instrument', name='instrumentType')
+                        option(value='0', selected= true) Select
+                        option(value='beginner') Beginner 
+                        option(value='1-year') 1 Year
+                        option(value='2-years') 2 Years
+                        option(value='3-years') 3 Years
+                        option(value='4-years') 4 Years
+                        option(value='over-5-years') over 5 Years
+                    label.info__label.ma-bt-md(for="experience-text") Please feel free to elaborate on their musical experience here
+                        p This will be available for your instructor to review.
+                    textarea(name="experience-text", cols="30", rows="10", id="student-experience-description")
+                fieldset.registration__field.registration__field-5
+                    label.info__label.ma-bt-md.ma-tp-md(for="lesson-frequency") How often should <span>Jarred's</span> lessons be?
+                        p We recommend weekly lessons
+                    select.select-info(id="lesson-frequency").select
+                        option(value='0', selected= true) Select
+                        option(value='weekly') Weekly
+                        option(value='bi-weekly') Bi-weekly
+                        option(value='Monthly') Monthly
+                        option(value='single') 1 lesson
+                        option(value='single') 3 lessons
+                    label.info__label.ma-bt-md
+                    .ma-tp-md(for="lesson-duration") Select the duration for <span>Jarred's</span> lessons.
+                    select(id="lesson-duration").select
+                        option(value='0', selected= true) Select
+                        option(value='30') 30-minutes
+                        option(value='45') 45-minutes
+                        option(value='60') 60-minutes
+                        option(value='90') 90-minutes
+                        option(value='120') 120-minutes
+                fieldset.registration__field.registration__field-6.registration-student__1
+                    label.form__label Available instructors
+                    input.form__input--option.form__input--option-reg(type='radio', id='Jarred', name='student-instructor',value='Jarred')
+                    label.form__label--option.form__label--option-reg.student-instructor(for='Jarred')
+                        span Jarred C.
+                    input.form__input--option.form__input--option-reg.student-instructor(type='radio', id='Christie', name='student-instructor',value='Christie')
+                    label.form__label--option.form__label--option-reg(for='Christie')
+                        span Christie C.
+                    label.form__label.ma-tp-md Jarred's available days
+                    input.form__input--option.form__input--option-reg(type='radio', id='Tuesday', name='day', value='Tuesday')
+                    label.form__label--option.form__label--option-reg.student-time(for='Tuesday')
+                        span Tuesday 
+                    input.form__input--option.form__input--option-reg(type='radio', id='Saturday', name='day', value='Saturday')
+                    label.form__label--option.form__label--option-reg.student-time(for='Saturday')
+                        span Saturday
+                    label.form__label.ma-tp-md Jarred's available start times
+                    input.form__input--option.form__input--option-reg(type='radio', id='5:30pm', name='time', value='5:30pm')
+                    label.form__label--option.form__label--option-reg.student-time(for='5:30pm')
+                        span 5:30pm
+                    input.form__input--option.form__input--option-reg(type='radio', id='5:45pm', name='time', value='5:45pm')
+                    label.form__label--option.form__label--option-reg.student-time(for='5:45pm')
+                        span.form__input--option-times 5:45pm
+                    label.form__label.ma-bt-lg(for="time") Please select your start date.
+                    input.form__input.ma-bt-lg(id="student-date",type="date")
+                    p.form__p--trial Your first lesson will be a 30-minute meet and greet with your instructor, free of charge.
+            fieldset.registration__field.registration__field-7
+                h4.heading-quadiary Would you like to add another lesson?
+                    //- .students__item--line-add.line &nbsp;
+                    label.form__label--option.form__label--add.addLesson(for='add-lesson', id='addLesson') Add student or lesson
+                        input.form__input--option.form__input--add(type="checkbox", name='add-lesson', id="add-lesson")
+                        span.form__span--add &#43
+                    .form__label--option.form__label--or or
+                    label.form__label--option.form__label--add.checkout-option(for='checkout', id='checkout') Proceed to checkout
+                        svg.info__student--svg.checkout
+                            use.info__student--icon(xlink:href='/img/icons/icon.svg#icon-shopping-cart')
+                        input.form__input--option.form__input--add(type="checkbox", name='checkout')
+                        
+            fieldset.registration__field.registration__field-8.alert
+                h3.heading-tertiary Create account
+                h4.heading-sextiary Have an account?
+                    a.field__login(href="/login") Login
+                .form-7__group--col
+                    label.form__label.form-7__label.form__label--text(for='account-firstname') First name
+                    input#account-firstname.form__input(type='text', placeholder='First name', required)
+                .form-7__group--col
+                    label.form__label.form-7__label.form__label--text(for='account-lastname') Last name
+                    input#account-lastname.form__input(type='text', placeholder='Last name', required)
+                .form-7__group--col
+                    label.form__label.form-7__label.form__label--text(for='account-email') Email address
+                    input#account-email.form__input(type='email', placeholder='you@example.com', required)
+                .form-7__group--col
+                    label.form__label.form-7__label.form__label--text(for='account-phonenumber') Phone number
+                    input#account-phonenumber.form__input(type='tel', placeholder='Phone number', required)
+                .form-7__group--col
+                    label.form__label.form-7__label.form__label--text(for='password') Password
+                    input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                .form-7__group--col
+                    label.form__label.form-7__label.form__label--text(for='confirm_password') Confirm password
+                    input#confirm_password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+            fieldset.registration__field.registration__field-9
+                h3 Billing information
+                .billing__group--row 
+                    .billing__group--col
+                        label.form__label.billing__label(for='billing-full_name') Full name
+                        input#billing-full_name.form__input.billing__input(type='text', placeholder='John More Doe', required)
+                    .billing__group--col
+                        label.form__label.billing__label(for='billing-email') Email address
+                        input#billing-email.form__input.billing__input(type='email', placeholder='you@example.com', required)
+                    .billing__group--col
+                        label.form__label.billing__label(for='billing-address') Address
+                        input#billing-address.form__input.billing__input(type='text', placeholder='542 W. 52nd Street', required)
+                    .billing__group--col
+                        label.form__label.billing__label(for='billing-city') City
+                        input#billing-city.form__input.billing__input(type='text', placeholder='New York', required)
+                    .billing__group--col
+                        label.form__label.billing__label(for='billing-state') State
+                        input#billing-state.form__input.billing__input(type='text', placeholder='New York', required)
+                    .billing__group--col
+                        label.form__label.billing__label(for='billing-zip') Zipcode
+                        input#billing-zip.form__input.billing__input(type='number', placeholder='10001', required, length='5')
+                .billing__item--line.line &nbsp;
+                h3 Payment information
+                .billing__group--row 
+                    .billing__group--col
+                        label.form__label.billing__label(for='card_name') Name on card
+                        input#card_name.form__input.billing__input(type='text', placeholder='John More Doe', required)
+                    .billing__group--col
+                        label(for='card_type').form__label.billing__label Choose card type
+                            select.select.billing__select(id='card_type',placeholder='creditcard', name='cardType')
+                                option(value='0', selected= true) Select
+                                option(value='Violin') Visa
+                                option(value='Viola') Amex
+                                option(value='Piano') MasterCard
+                                option(value='Voice') Discover
+                    .billing__group--col
+                        label.form__label.billing__label(for='card_num') Card number
+                        input#card_num.form__input.billing__input(type='text', placeholder='1111-2222-3333-4444', required)
+                    .billing__group--col
+                        label.form__label.billing__label(for='exp_mon') Exp month
+                        input#exp_mon.form__input.billing__input(type='text', placeholder='September', required)
+                    .billing__group--col
+                        label.form__label.billing__label(for='exp_yr') Exp year
+                        input#exp_yr.form__input.billing__input(type='text', placeholder='2027', required)
+                    .billing__group--col
+                        label.form__label.billing__label(for='csv') CSV
+                        input#csv.form__input.billing__input(type='text', placeholder='403', required)
+        .form-nav 
+            +next
+    .students
+        //- .students__item--line-delete.line &nbsp;
+        table#student-list
+            thead.student__table--head#student__table
+            //-     tr.lesson_header.student__table--active
+            //-         th Student
+            //-         th Instrument
+            //-         th Instructor
+            //-         th
+            //-         tbody
+    .modal__background
+        .update__lesson 
+            fieldset.registration__field--modal.registration__field--modal-1--p1
+                h3.form__label(for='student') Who are these lessons for?
+                input.form__input--option.form__input--option-reg(type='radio', name='Student',
+                value='myself',
+                id="myself") 
+                label.form__label--option.form__label--option-reg.formAdmin(for="myself")
+                    span Myself 
+                input.form__input--option.form__input--option-reg(type='radio',
+                id='child',
+                value='child', name='Student')
+                label.form__label--option.form__label--option-reg.formAdmin(for='child')
+                    span Child
+                input.form__input--option.form__input--option-reg(type='radio',
+                id='grandchild', value='grandchild',name='Student')
+                label.form__label--option.form__label--option-reg.formAdmin(for='grandchild')
+                    span Grandchild
+                input.form__input--option.form__input--option-reg(type='radio', name='Student',
+                value='other',
+                id='other')
+                label.form__label--option.form__label--option-reg.formAdmin(for='other')
+                    span Other
+            fieldset.registration__field--modal.registration__field--modal-2-part-2
+                h3.form__label.form__label--info(for='student') Enter <span>their</span> information
+                label.form__label.form__label--input(for='student-firstnam-2') First Name
+                input#student-firstname-2.form__input.ma-bt-md(type='text', required, name='firstname')
+                label.form__label.form__label--input(for='student-lastname-2') Last Name
+                input#student-lastname-2.form__input.ma-bt-md(type='text', required, name='lastname')
+                label.form__label--input.form__label(for='relationship') Their relationship to you
+                input.student-relationship.form__label--input.form__input.ma-bt-md(type='text',name='relationship')
+                label.form__label--input.form__label(for='grandchild-dob') Date of birth
+                input#student-birthdate.form__label--input.form__input.ma-bt-md(type='date',name='grandchild-dob')
+            fieldset.registration__field--modal.registration__field--modal-3
+                label(for='instrument').form__label.form__label--select.form__label--3.ma-bt-md Choose intrument for <span>Jarred</span>
+                    select.select(id='student-instrument',placeholder='Instrument', name='instrumentType')
+                        option(value='0', selected= true) Select
+                        option(value='Violin') Violin
+                        option(value='Viola') Viola
+                        option(value='Piano') Piano
+                        option(value='Voice') Voice
+            fieldset.registration__field--modal.registration__field--modal-4
+                label.ma-bt-md(for="experience") What type of experience does <span>Jarred</span> have?
+                select.select.ma-bt-md(id="student-experience",placeholder='Instrument', name='instrumentType')
+                    option(value='0', selected= true) Select
+                    option(value='beginner') Beginner 
+                    option(value='1-year') 1 Year
+                    option(value='2-years') 2 Years
+                    option(value='3-years') 3 Years
+                    option(value='4-years') 4 Years
+                    option(value='over-5-years') over 5 Years
+                label.info__label.ma-bt-md(for="experience-text") Please feel free to elaborate on their musical experience here
+                    p This will be available for your instructor to review.
+                textarea(name="experience-text", cols="30", rows="10", id="student-experience-description")
+            fieldset.registration__field--modal.registration__field--modal-5
+                label.info__label.ma-bt-md.ma-tp-md(for="lesson-frequency") How often should <span>Jarred's</span> lessons be?
+                    p We recommend weekly lessons
+                select.select-info(id="lesson-frequency").select
+                    option(value='0', selected= true) Select
+                    option(value='weekly') Weekly
+                    option(value='bi-weekly') Bi-weekly
+                    option(value='Monthly') Monthly
+                    option(value='single') 1 lesson
+                    option(value='single') 3 lessons
+                label.info__label.ma-bt-md
+                .ma-tp-md(for="lesson-duration") Select the duration for <span>Jarred's</span> lessons.
+                select(id="lesson-duration").select
+                    option(value='0', selected= true) Select
+                    option(value='30') 30-minutes
+                    option(value='45') 45-minutes
+                    option(value='60') 60-minutes
+                    option(value='90') 90-minutes
+                    option(value='120') 120-minutes
+            fieldset.registration__field--modal.registration__field--modal-6
+                label.form__label Available instructors
+                input.form__input--option.form__input--option-reg(type='radio', id='Jarred', name='student-instructor',value='Jarred')
+                label.form__label--option.form__label--option-reg.student-instructor(for='Jarred')
+                    span Jarred C.
+                input.form__input--option.form__input--option-reg.student-instructor(type='radio', id='Christie', name='student-instructor',value='Christie')
+                label.form__label--option.form__label--option-reg(for='Christie')
+                    span Christie C.
+                label.form__label.form__label--instructor__times.ma-tp-md Jarred's available start times
+                input.form__input--option.form__input--option-reg(type='radio', id='5:30pm', name='time', value='5:30pm')
+                label.form__label--option.form__label--option-reg.student-time(for='5:30pm')
+                    span 5:30pm
+                input.form__input--option.form__input--option-reg(type='radio', id='5:45pm', name='time', value='5:45pm')
+                label.form__label--option.form__label--option-reg.student-time(for='5:45pm')
+                    span.form__input--option-times 5:45pm
+                label.form__label.ma-bt-lg(for="time") Please select a date that works best for <span>&nbsp;Billy's&nbsp;</span> lesson.
+                input.form__input.ma-bt-lg(id="student-date",type="date")
+            .registration__field--modal__buttons
+                <button class="student__button button__edit" name="cancel"><svg class="info__student--svg"><use class="info__student--icon" xlink:href="/img/icons/icon.svg#icon-x" viewBox="0 0 1000 1000"></use></svg></button>
+                <button class="student__button button__delete" name="save"><svg class="info__student--svg"><use class="info__student--icon" xlink:href="/img/icons/icon.svg#icon-save"></use></svg></button>

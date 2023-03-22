@@ -1,0 +1,109 @@
+extends base
+
+block content
+    main.main
+        .register
+            h2.heading-secondary.ma-bt-lg.heading-register Register now!
+            form.form--register
+                .form__group--col
+                    label.form__label(for='first_name') First name
+                    input#first_name.form__input(type='text', placeholder='First name', required)
+                .form__group--col
+                    label.form__label(for='last_name') Last name
+                    input#last_name.form__input(type='text', placeholder='Last name', required)
+                .form__group--col
+                    label.form__label(for='email') Email address
+                    input#email.form__input(type='email', placeholder='you@example.com', required)
+                .form__group--col
+                    label.form__label(for='phone_number') Phone number
+                    input#phone_number.form__input(type='tel', placeholder='Phone number', required)
+                .form__group.ma-bt-md.form__group--col
+                    label.form__label(for='password') Password
+                    input#password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                .form__group.ma-bt-md.form__group--col
+                    label.form__label(for='confirm_password') Confirm password
+                    input#confirm_password.form__input(type='password', placeholder='••••••••', required, minlength='8')
+                .form__group--btn
+                    button.btn.btn--blue Register
+            
+        
+//- <section class="register">
+//-       <form action="#" class="register__form--section">
+//-         <div class="register__form">
+//-           <div class="register__form--header"><h2>Register now!</h2></div>
+//-           <div class="feature">
+//-             <input
+//-               type="text"
+//-               class="feature__input"
+//-               placeholder="first name"
+//-               id="first_name"
+//-               required
+//-             />
+//-             <label for="" class="register__form--label feature__label"
+//-               >first name</label
+//-             >
+//-           </div>
+
+//-           <div class="feature">
+//-             <input
+//-               type="text"
+//-               class="feature__input"
+//-               placeholder="last name"
+//-               id="last_name"
+//-               required
+//-             />
+//-             <label for="" class="register__form--label feature__label"
+//-               >last name</label
+//-             >
+//-           </div>
+
+//-           <div class="feature">
+//-             <input
+//-               type="tel"
+//-               class="feature__input"
+//-               placeholder="phone number"
+//-               id="phone"
+//-               required
+//-             />
+//-             <label for="phone" class="feature__label">phone number</label>
+//-           </div>
+//-           <div class="feature">
+//-             <input
+//-               type="email"
+//-               class="feature__input"
+//-               placeholder="email"
+//-               id="email"
+//-               required
+//-             />
+//-             <label for="email" class="feature__label">email</label>
+//-           </div>
+//-           <div class="feature">
+//-             <input
+//-               type="password"
+//-               class="feature__input"
+//-               placeholder="password"
+//-               id="registration__password"
+//-               required
+//-             />
+//-             <label for="registration__password" class="feature__label"
+//-               >password</label
+//-             >
+//-           </div>
+//-           <div class="feature">
+//-             <input
+//-               type="password"
+//-               class="feature__input"
+//-               placeholder="confirm password"
+//-               id="registration__password--confirm"
+//-               required
+//-             />
+//-             <label for="registration__password--confirm" class="feature__label"
+//-               >confirm password</label
+//-             >
+//-           </div>
+//-           <div class="register__button">
+//-             <button class="form__button">register</button>
+//-           </div>
+//-         </div>
+//-       </form>
+//-     </section>

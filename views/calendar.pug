@@ -1,0 +1,176 @@
+extends account
+
+block calendar
+    +navItem('/my-calendar', 'Calendar', 'calendar', true)
+
+block content
+    .schedule
+        .schedule--header
+            .schedule--title.heading-account-secondary MusiWork Schedule
+            #monthDisplay.monthlyDisplay
+            div.cal-button
+                button.button__calendar#backButton
+                    svg.schedule__skip--svg
+                        use.schedule__skip--use(xlink:href="/img/icons/icon.svg#icon-chevron-left", viewBox="0 0 1000 1000")
+                button.button__calendar#nextButton
+                    svg.schedule__skip--svg
+                        use.schedule__skip--use(xlink:href="/img/icons/icon.svg#icon-chevron-right", viewBox="0 0 1000 1000")
+            .todayDisplay#todayDisplay Today
+            select.scheduling__view 
+                option(selected=true).scheduling__view--option Monthly 
+                option.scheduling__view--option Weekly 
+                option.scheduling__view--option Daily
+                option.scheduling__view--option List
+            if user.role === ('lead-admin' || 'owner' || 'instructor')
+                button.button__edit--availability.student__button.availability__update#availability__update Update Availability
+                    svg.info__availability--svg.availability__update--svg
+                        use.availability__update--use(xlink:href="/img/icons/icon.svg#icon-edit", viewBox="0 0 1000 1000")
+        #body 
+            #container
+                //- #header.heading-secondary
+                #weekdays
+                    div Sun
+                    div Mon
+                    div Tue
+                    div Wed
+                    div Thu
+                    div Fri
+                    div Sat
+                //- each availability in availabilities
+                //-     h3.user_availability #{availability.create_availability.availability_start_date}
+                #calendar
+            #newEventModal
+                h2 New Event
+                input#eventTitleInput(placeholder="Event Title")
+                button#saveButton Save
+                button#cancelButton Cancel
+            #deleteEventModal
+                h2 Event
+                p#eventText 
+                button.button__calendar#deleteButton Delete
+                button.button__calendar#closeButton Close
+    form#availability__modal.availability__modal.availability__update--form
+        .availability__background.update__availability  
+            ul.availability__options 
+                li.active_availability_source Create
+                li Update
+            fieldset.availabliity__fieldset.create__availability
+                h3.form__header(for='student') Create Availability
+                .recurring--field
+                    select(id="recurring-info").recurring--field__select
+                        option(value='does_not_repeat', id="does-not-repeat__option") Does Not Repeat
+                        option(value='weekly_day', id="weekly_day") Repeats Every Week on 
+                            span(class='today__day') Monday
+                        option(value='30') Repeats Daily 
+                        option(value='bi-weekly') Repeats Every 2 Weeks on 
+                            span(class='today__day') Monday 
+                        option(value='custom', id='recurring-info__custom') Custom
+                    span.checkmark
+                fieldset.availabliity__fieldset.availability__recurring
+                    .availability_date
+                        .start__date.date   
+                            input#start_date_recurring(type="date",name="recurringStartDate")
+                        .middle_text to
+                        .end__date.date
+                            input#end_date_recurring(type="date", name="recurringEndDate")
+                    .availability_time
+                        .recurring_start_time
+                            label.date(for="recurringStartTime") 
+                                input.time#startTime(type='text', value='7:00 PM')
+                        .middle_text to
+                        .recurring_end_time
+                            label.date(for="recurringStartTime") 
+                                input.time#endTime(type='text', value='8:00 PM')
+                            .time-dropdown.time_end
+                    .recurring_timezone         
+                        label.date(for="recurringTimeZone")
+                            input#availability_timezone(type='text', value='Eastern Standard Time')
+                fieldset.availabliity__fieldset.availability__not-recurring.availability__active
+                    .availability_date
+                        .start__date.date   
+                            input#start_date_not-recurring(type="date",name="notRecurringStartDate")
+                    .availability_time
+                        .recurring_start_time
+                            label.date(for="recurringStartTime") 
+                                input.time#startTime(type='text', value='7:00 AM') 
+                            .time_dropdown.time_start 
+                        .middle_text to
+                        .recurring_end_time
+                            label.date(for="recurringStartTime") 
+                                input.time#endTime(type='text', value='8:00 AM')
+                            .time-dropdown.time_end
+                    .recurring_timezone         
+                        label.date(for="recurringTimeZone")
+                            input(type='text', value='Eastern Standard Time')
+                .availability__field--modal__buttons
+                    <button class="student__button button__edit" id="availability__cancel" name="cancel" type="button"><svg class="info__student--svg"><use class="info__student--icon" xlink:href="/img/icons/icon.svg#icon-x" viewBox="0 0 1000 1000"></use></svg></button>
+                    <button class="student__button button__delete" id="availability__save"name="save"><svg class="info__student--svg" type="button"><use class="info__student--icon" xlink:href="/img/icons/icon.svg#icon-save"></use></svg></button>
+    #custom_recurrence.custom_recurrence
+        .recurring--fieldset
+            h1.custom_recurrence--header Customize Recurrence
+            .Repeat_number 
+                .repeat_number__header Repeat every
+                input.repeat_number__header--input#repeat_number(type="number", value='1', min="1" max="8")
+                select(id="recurring_frequency").select_overall--freq
+                    option.freq__term(value='week', selected= true) Week
+                    option.freq__term(value='month') Month
+                    option.freq__term(value='year') Year
+            .days_of_the_week
+                input.checkbox__primary--input.checkbox--input__recurring-day(type='checkbox', id='Monday', name='Monday') 
+                label.checkbox__primary--label(for='Monday')
+                    svg.checkbox--primary__svg
+                        use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                    span Monday
+                input.checkbox__primary--input.checkbox--input__recurring-day(type='checkbox', id='Tuesday', name='Tuesday') 
+                label.checkbox__primary--label(for='Tuesday')
+                    svg.checkbox--primary__svg
+                        use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                    span Tuesday
+                input.checkbox__primary--input.checkbox--input__recurring-day(type='checkbox', id='Wednesday', name='Wednesday') 
+                label.checkbox__primary--label(for='Wednesday')
+                    svg.checkbox--primary__svg
+                        use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                    span Wednesday
+                input.checkbox__primary--input.checkbox--input__recurring-day(type='checkbox', id='Thursday', name='Thursday') 
+                label.checkbox__primary--label(for='Thursday')
+                    svg.checkbox--primary__svg
+                        use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                    span Thursday
+                input.checkbox__primary--input.checkbox--input__recurring-day(type='checkbox', id='Friday', name='Friday') 
+                label.checkbox__primary--label(for='Friday')
+                    svg.checkbox--primary__svg
+                        use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                    span Friday
+                input.checkbox__primary--input.checkbox--input__recurring-day(type='checkbox', id='Saturday', name='Saturday') 
+                label.checkbox__primary--label(for='Saturday')
+                    svg.checkbox--primary__svg
+                        use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                    span Saturday
+                input.checkbox__primary--input.checkbox--input__recurring-day(type='checkbox', id='Sunday', name='Sunday') 
+                label.checkbox__primary--label(for='Sunday')
+                    svg.checkbox--primary__svg
+                        use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                    span Sunday
+            .recurrence-end Ends 
+                .recurrence-end__type.checkbox-reccurence
+                    input.recurrence-end__input(type="radio", id="recurring__end--on", name='recurring__end')
+                    label(for="recurring__end--on", id='recurring__end--on-label')
+                        svg.checkbox--primary__svg
+                            use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                        span On 
+                    input.recurrence-end__on-date(type="date", min='1899-01-01', max='2000-13-13', id="recurrence-end__on-date")
+                label.recurrence-end__type.checkbox-reccurence 
+                    input.recurrence-end__input(type="radio", id='recurring__end--after', name='recurring__end')
+                    label(for='recurring__end--after')
+                        svg.checkbox--primary__svg
+                            use.checkbox--primary__use(xlink:href='img/icons/icon.svg#icon-check')
+                        span After
+                    input.recurrence-end-after__number.recurrence-occurence(type="number", min="1" max="25", id="recurring__end--after-occurances")
+                    label.recurrence-end-after__number--label.recurrence-end__type.recurrence-occurence#occurence__name occurences
+            .recurring__button
+                button.recurring--cancel#recurring--cancel Cancel
+                button.recurring--done#recurring--done Done
+    script(type="module", src='/js/calendar.js')
+    script(src='/js/schedule.js')
+    script(src='/js/date_picker.js')
+    //- script(src='/js/instructorAvailability.js')

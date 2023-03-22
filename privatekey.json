@@ -1,0 +1,26 @@
+{
+  "web": {
+    "client_id": "214405943012-bfifcr839f0inqk5ak6i44isqa6atkeu.apps.googleusercontent.com",
+    "project_id": "musiwork-342017",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_secret": "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",
+    "redirect_uris": [
+      "https://developers.google.com/oauthplayground",
+      "http://localhost:8080/api/v1/users/oauth/google",
+      "http://localhost:8080/",
+      "https://console.developers.google.com/apis/credentials/oauthclient",
+      "http://localhost:8080/api/v1/users/signupGOAuth",
+      "http://localhost:8080/api/v1/users/signupGOAuth/",
+      "http://localhost:8080/api/v1/users/google-oauth",
+      "http://localhost:8080",
+      "http://localhost:8080/api/v1/users/events",
+      "http://localhost:3000",
+      "http://localhost:3000/"
+    ],
+    "javascript_origins": ["http://localhost:8080", "http://localhost:3000"],
+    "client_email": "musitune@musiwork-342017.iam.gserviceaccount.com",
+    "private_key": "101283181046170196861"
+  }
+}

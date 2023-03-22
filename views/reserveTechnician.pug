@@ -1,0 +1,31 @@
+extends base
+block content
+    body.reservationForm__body
+        form.reservationForm_form
+            header.reservationForm__header Reserve your Piano Maintentance
+            .reservationForm__container
+                fieldset.reservationForm__timePickerStep
+                    .reservationForm__timePickerStep--dayLabel_container
+                        label.reservationForm__timePickerStep--dayLabel Reservation date
+                        input.reservationForm__timePickerStep--dayInput(type="date")
+                    .reservationForm__timePickerStep--technicianLabel_container
+                        label.reservationForm__timePickerStep--instructorDropdownLabel Select a Piano Technician
+                        select.reservationForm__timePickerStep--instructorDropdown
+                            option.reservationForm__timePickerStep--instructorOption Any
+                            option.reservationForm__timePickerStep--instructorOption Jarred
+                            option.reservationForm__timePickerStep--instructorOption Joseph
+                            option.reservationForm__timePickerStep--instructorOption Dan
+                    .reservationForm__timePickerStep--availableTimesContainer
+                        .reservationForm__timePickerStep--listedTimeHeader
+                            label.reservationForm__timePickerStep--availableTimesLabel Available times 
+                            p.reservationForm__timePickerStep--availableTimesInfo
+                        .reservationForm__timePickerStep--listedTimeList
+                            .reservationForm__timePickerStep--availableTimesOption
+                                input.reservationForm__timePickerStep--listedTimeInput(type='radio', id='3:00pm', name='available-time',value='3:00pm')
+                                label.reservationForm__timePickerStep--listedTimeLabel(for="3:00pm")
+                                    span 3:00pm
+                            .reservationForm__timePickerStep--availableTimesOption
+                                input.reservationForm__timePickerStep--listedTimeInput(type='radio', id='3:30pm', name='available-time',value='3:30pm')
+                                label.reservationForm__timePickerStep--listedTimeLabel(for="3:30pm")
+                                    span 3:30pm
+                    

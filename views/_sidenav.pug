@@ -1,0 +1,46 @@
+mixin navItem(link, text, icon, active)
+  li.nav__link(class=`${active ? 'side-nav--active' : ''}`)
+    a.nav__href(href=`${link}`)
+      svg.side__nav--svg
+        use.side__nav--use(xlink:href=`img/icons/icon.svg#icon-${icon}`)
+      span
+        | #{text}
+
+.user-view__menu
+    //- .side-nav__item--line.line &nbsp;
+    ul.side-nav__outer
+        li.side-nav__logo
+            a(href='/')
+                img.side-bar__logo--favicon(src='/img/logo-favicon-white.svg' alt='MusiWork logo' href="/")
+        section.side-nav.side-nav__dashboard
+            block dashboard
+                +navItem('/me', 'Dashboard', 'home')
+            block booking
+                +navItem('/my-bookings', 'Bookings', 'briefcase')
+            block calendar
+                +navItem('/my-calendar', 'Calendar', 'calendar')
+            block billing
+                +navItem('/my-billing', 'Billing', 'credit-card')
+            block review              
+                +navItem('my-reviews', 'Reviews', 'star')
+        if user.role === ('lead-admin' || 'owner' || 'instructor')
+            section.side-nav__admin.side-nav
+                block all_studios              
+                    +navItem('/manage-studios', 'Manage studios', 'map')
+                block all_users             
+                    +navItem('/manage-users', 'Manage users', 'users')
+                block all_reviews              
+                    +navItem('/manage-reviews', 'Manage reviews', 'star')
+                block all_bookings              
+                    +navItem('/manage-bookings', 'Manage bookings', 'briefcase')
+                block all_billing
+                    +navItem('/manage-billing', 'Manage billing', 'credit-card')
+        section.side-nav__account.side-nav
+            block settings              
+                +navItem('my-settings', 'Settings', 'settings')
+            li.nav__link.nav__el--logout#logout
+                a.nav__href(href="#")
+                    svg.side__nav--svg
+                        use(xlink:href="img/icons/icon.svg#icon-log-out")
+                    span 
+                        | Logout

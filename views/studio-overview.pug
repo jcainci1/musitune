@@ -1,0 +1,46 @@
+extends base
+
+block content
+    main.main
+        .card-container
+            each studio in studios
+                .card
+                    .card__header
+                        .card__picture
+                            .card__picture-overlay &nbsp;
+                            img.card__picture-img(src=`/img/studio/${studio.imageCover}`, alt=`${studio.courseName}`)
+                        h3.heading-tertirary.card__header-name
+                            span= studio.courseName
+
+                    .card__details
+                        h4.card__sub-heading= studio.courseType
+                        
+                        h4.card__description=`${studio.instrument.join(', ')} | ${studio.difficulty}`
+                        p.card__text=studio.summary
+                    .card__specifications
+                        .card__data
+                            svg.card__icon
+                                use.card__icon(xlink:href='/img/icons/icon.svg#calendar')
+                            span=`${studio.courseFrequency} lessons`
+                        .card__data
+                            svg.card__icon
+                                use.card__icon(xlink:href='/img/icons/icon.svg#clock')
+                            span=`${studio.courseDuration}-minutes`
+                        .card__data
+                            svg.card__icon
+                                use.card__icon(xlink:href='/img/icons/icon.svg#location')
+                            span virtual
+                        .card__data
+                            svg.card__icon
+                                use.card__icon(xlink:href='/img/icons/icon.svg#instructor')
+                            span Jarred C.
+                        
+                    .card__footer
+                        p
+                            span.card__footer-value=`$${studio.price} `
+                            span.card__footer-text  per lesson
+                        p.card__ratings
+                            span.card__footer-value= studio.ratingsAverage 
+                            |
+                            span.card__footer-text= ` rating (${studio.ratingsQuantity})`
+                        a.btn.btn--blue.btn--small.card__footer-btn(href=`/studio/${studio.slug}`) Details
